@@ -24,8 +24,12 @@ ERP1/
 │   ├── 6. *.md              # Phase 6: CMV framework integration
 │   └── *.jsonl              # Supporting data files
 │
-└── scripts/
-    └── taxonomy_quality_metrics.py   # Quality validation script
+├── scripts/
+│   ├── taxonomy_quality_metrics.py   # Quality validation script
+│   ├── characteristic_heatmap.py     # Characteristic distribution visualization
+│   └── characteristic_heatmap.png    # Generated heatmap output
+│
+└── AgenticAI_Capability_Maturity_Value (CMV)_Taxonomy_V0.6.pdf  # Research paper
 ```
 
 ## Taxonomy Dimensions
@@ -84,7 +88,7 @@ git clone <repository-url>
 cd ERP1
 
 # Install dependencies
-pip install numpy pandas scipy
+pip install numpy pandas scipy matplotlib seaborn
 ```
 
 ## Usage
@@ -101,6 +105,29 @@ This generates:
 - Dimension independence analysis (Cramer's V)
 - Spearman correlation analysis
 - Summary statistics
+
+### Generating Characteristic Distribution Heatmap
+
+```bash
+python scripts/characteristic_heatmap.py
+```
+
+This generates a visualization showing characteristic distribution across all 25 reference objects:
+- Heatmap of 25 objects × 9 dimensions
+- Overall distribution analysis
+- Per-dimension characteristic breakdown
+- Output saved to `scripts/characteristic_heatmap.png`
+
+**Key Finding:** The distribution validates that the taxonomy captures the actual state of the field:
+
+| Level | Description | Count | Percentage |
+|-------|-------------|-------|------------|
+| C_.1 | Basic | 53 | 23.6% |
+| C_.2 | Intermediate | 90 | **40.0%** |
+| C_.3 | Advanced | 59 | 26.2% |
+| C_.4 | Sophisticated | 23 | **10.2%** |
+
+Most systems cluster at intermediate levels (C_.2), with advanced characteristics (C_.4) remaining relatively rare.
 
 ## Research Phases
 
